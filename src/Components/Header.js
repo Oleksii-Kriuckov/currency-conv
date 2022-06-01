@@ -13,7 +13,7 @@ const Header = () => {
 
     return (
         <Navbar bg="primary" variant="dark" className='d-block' > {
-                !isError ?
+            !isError ?
                 <>
                     <h2> Currency converter </h2>
                     <Container className='justify-content-around mt-2 py-1' >
@@ -24,7 +24,7 @@ const Header = () => {
                         )}
                     </Container>
                 </> : null
-            }
+        }
         </Navbar>
     )
 }
