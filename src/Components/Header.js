@@ -2,55 +2,53 @@ import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { currencyArrayState } from '../Atoms/AtomArrayCurrency';
 import { isErrorState, errorMsgState } from '../Atoms/atomError';
-import { foreinCurrencyArray } from '../const';
 import { Navbar, Container } from 'react-bootstrap';
-import axios from 'axios';
 import Scoreboard from './Scoreboard';
+import useFetchRate from '../Hooks/useFetchRate';
 
 const Header = () => {
     const [currencyArray, setCurrencyArray] = useRecoilState(currencyArrayState)
-
-    const [isError, setIsError] = useRecoilState(isErrorState)
-    const [errorMsg, setErrorMsg] = useRecoilState(errorMsgState)
-
-    async function fetchRate() {
-        await axios.get('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json')
-            .then((responce) => {
-                setIsError(false)
-                currency(responce.data);
-            })
-            .catch((error) => {
-                setIsError(true)            
-                setErrorMsg(error.toJSON().message)
-            })
-    }
-
-    const currency = (array) => {
-        const arr = [];
-        array.map((elem) => {
-            if (foreinCurrencyArray.some(el => el === elem.cc)) {
-                arr.push(elem)
-            }
-        })
-        setCurrencyArray(arr);
-    }
-
-    useEffect(() => {
-        fetchRate();
-    }, [])
+    const [isError, setIsError] = useRecoilState(isErrorState);
+    const { errorMsg } = useFetchRate('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json')
 
     return (
-        <Navbar bg="primary" variant="dark" style={{height: 50}}>
+        <Navbar bg="primary" variant="dark" className='d-block' >
             {!isError ?
-                <Container className='justify-content-around py-1'>
+            <>
+        <h2>Currency converter</h2>
+            <Container className='justify-content-around mt-2 py-1'>
                     {currencyArray.map((currency, index) =>
-                        <Scoreboard key={index} cc={currency.cc}>{currency.rate.toFixed(2)}</Scoreboard> //Перейменувати сс
+                        <Scoreboard key={index} curName={currency.cc}>{currency.rate.toFixed(2)}</Scoreboard> 
                     )}
                 </Container>
+            </>
                 : null
             }
         </Navbar>
     )
 }
-
 export default Header
+
+        //query
+        // async function fetchRate() {
+        //     await axios.get('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json')
+        //         .then((responce) => {
+        //             setIsError(false)
+        //             currency(responce.data);
+        //         })
+        //         .catch((error) => {
+        //             setIsError(true)
+        //             setErrorMsg(error.toJSON().message)
+        //         })
+        // }
+    
+        // Create currency array
+        // const currency = (array) => {
+        //     const arr = [];
+        //     array.map((elem) => {
+        //         if (foreinCurrencyArray.some(el => el === elem.cc)) {
+        //             arr.push(elem)
+        //         }
+        //     })
+        //     setCurrencyArray(arr);
+        // }

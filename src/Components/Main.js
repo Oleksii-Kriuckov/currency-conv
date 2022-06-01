@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react'
 import { Form } from 'react-bootstrap'
 import { useRecoilState } from 'recoil';
 import { isErrorState, errorMsgState } from '../Atoms/atomError';
-import { convert, pattern } from '../const';
+import { convert, pattern } from '../Data/const';
 import FormGroup from './FormGroup';
 import FormDisabled from './FormDisabled';
 
@@ -19,13 +19,10 @@ const Main = () => {
     const [validation, setValidation] = useState(false)
 
     const validationAmount = () => { 
-        
         if (pattern.test(amount)) {
-
             setAmount(Math.floor(parseFloat(amount)*100)/100)
             setIsValid(true)
             console.log("valid");
-
         }
     }
 
