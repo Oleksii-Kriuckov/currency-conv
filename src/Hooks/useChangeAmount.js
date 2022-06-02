@@ -18,7 +18,7 @@ export const useChangeAmount = () => {
         if (amount) {
             validationAmount()
             if (currencyFirst !== '' && currencySecond !== '') {
-                return setResultAmount();
+                return setResultAmount(amount, currencyFirst, currencySecond);
             }
         } else {
             return setAmountSecond('')

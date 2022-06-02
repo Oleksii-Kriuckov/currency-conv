@@ -1,23 +1,22 @@
-import React, { useState, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { Form } from 'react-bootstrap'
 import { useRecoilState } from 'recoil';
 import { isErrorState, errorMsgState } from '../Atoms/atomError';
-import { convert } from '../Data/const';
 import FormGroup from './FormGroup';
 import FormDisabled from './FormDisabled';
 import { amountState, amountSecondState } from "../Atoms/AtomAmount";
 import { currencyFirstState, currencySecondState } from '../Atoms/AtomCurrency';
-import { useValidation } from '../Hooks/useValidation';
 import { useChangeAmount } from '../Hooks/useChangeAmount';
+import { useSelectCurrency } from '../Hooks/useSelectCurrency';
 
 const Main = () => {
     const [currencyFirst, setCurrencyFirst] = useRecoilState(currencyFirstState)
     const [currencySecond, setCurrencySecond] = useRecoilState(currencySecondState)
     const [amountSecond, setAmountSecond] = useRecoilState(amountSecondState);
+    const [amount, setAmount] = useRecoilState(amountState)
 
     const [isError, setIsError] = useRecoilState(isErrorState)
     const [errorMsg, setErrorMsg] = useRecoilState(errorMsgState)
-    const [amount, setAmount] = useRecoilState(amountState)
 
     const {changeAmountFirst} = useChangeAmount();
 
@@ -25,19 +24,7 @@ const Main = () => {
         changeAmountFirst();
     }, [amount])
 
-    // const selectCurrencyFirst = (currency) => {
-    //     setCurrencyFirst(currency);
-    //     if (amount !== '' && currencySecond !== '') {
-    //         return setAmountSecond(convert(amount, currency, currencySecond).toFixed(2))
-    //     }
-    // }
-
-    // const selectCurrencySecond = (currency) => {
-    //     setCurrencySecond(currency);
-    //     if (amount !== '' && currencyFirst !== '') {
-    //         return setAmountSecond(convert(amount, currencyFirst, currency).toFixed(2))
-    //     }
-    // }
+    const {selectCurrencyFirst, selectCurrencySecond} = useSelectCurrency();
 
     return (
         <div>
