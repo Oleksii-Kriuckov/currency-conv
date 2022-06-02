@@ -5,3 +5,4 @@ export const convert = (amount, rate1, rate2) => {
 }
 
 export const pattern = /\d+\.\d{3}/
+

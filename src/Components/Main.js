@@ -16,7 +16,6 @@ const Main = () => {
     const [errorMsg, setErrorMsg] = useRecoilState(errorMsgState)
 
     const [isValid, setIsValid] = useState(false)
-    const [validation, setValidation] = useState(false)
 
     const validationAmount = () => { 
         if (pattern.test(amount)) {
