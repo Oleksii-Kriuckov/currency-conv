@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { amountState } from '../Components/UI/InputForMoney/atom';
+import { amountState } from '../Atoms/AtomAmount';
 import { pattern } from '../Data/const';
 
 export const useValidation = () => {

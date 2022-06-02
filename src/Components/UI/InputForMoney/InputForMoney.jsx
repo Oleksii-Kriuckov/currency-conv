@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRecoilState } from 'recoil';
 import { Form } from 'react-bootstrap';
-import { amountState } from './atom';
+import { amountState } from '../../../Atoms/AtomAmount';
 import style from './style.module.css'
 
 const InputForMoney = () => {

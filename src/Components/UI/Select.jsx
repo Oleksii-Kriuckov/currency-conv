@@ -6,7 +6,6 @@ import { useRecoilState } from 'recoil';
 const Select = ({ defaultvalue, value, onChange }) => {
     const [currencyArray, setCurrencyArray] = useRecoilState(currencyArrayState)
 
-
     return (
         <Form.Select
             id='select'

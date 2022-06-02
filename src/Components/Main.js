@@ -5,29 +5,24 @@ import { isErrorState, errorMsgState } from '../Atoms/atomError';
 import { convert } from '../Data/const';
 import FormGroup from './FormGroup';
 import FormDisabled from './FormDisabled';
-import { amountState } from "./UI/InputForMoney/atom";
+import { amountState, amountSecondState } from "../Atoms/AtomAmount";
+import { currencyFirstState, currencySecondState } from '../Atoms/AtomCurrency';
 import { useValidation } from '../Hooks/useValidation';
+import { useChangeAmount } from '../Hooks/useChangeAmount';
 
 const Main = () => {
-    const [amountSecond, setAmountSecond] = useState('')
-    const [currencyFirst, setCurrencyFirst] = useState('')
-    const [currencySecond, setCurrencySecond] = useState('')
+    const [currencyFirst, setCurrencyFirst] = useRecoilState(currencyFirstState)
+    const [currencySecond, setCurrencySecond] = useRecoilState(currencySecondState)
+    const [amountSecond, setAmountSecond] = useRecoilState(amountSecondState);
 
     const [isError, setIsError] = useRecoilState(isErrorState)
     const [errorMsg, setErrorMsg] = useRecoilState(errorMsgState)
     const [amount, setAmount] = useRecoilState(amountState)
 
-    const { validationAmount } = useValidation();
+    const {changeAmountFirst} = useChangeAmount();
 
-    const changeAmountFirst = useMemo(() => {
-        if (amount) {
-            validationAmount()
-            if (currencyFirst !== '' && currencySecond !== '') {
-                return setAmountSecond(convert(amount, currencyFirst, currencySecond).toFixed(2))
-            }
-        } else {
-            return setAmountSecond('')
-        }
+    useMemo(() => {
+        changeAmountFirst();
     }, [amount])
 
     const selectCurrencyFirst = (currency) => {
@@ -61,7 +56,6 @@ const Main = () => {
                             valueControl={amountSecond}
                             valueSelect={currencySecond}
                             onChangeSelect={selectCurrencySecond}
-                            disabled
                         />
                     </Form>
                 </>
