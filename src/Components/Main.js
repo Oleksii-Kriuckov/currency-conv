@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import { Form } from 'react-bootstrap'
 import { useRecoilState } from 'recoil';
-import { isErrorState, errorMsgState } from '../Atoms/atomError';
+import { isErrorState, errorMsgState } from '../Atoms/atomFetch';
 import FormGroup from './FormGroup';
 import FormDisabled from './FormDisabled';
 import { amountState, amountSecondState } from "../Atoms/AtomAmount";

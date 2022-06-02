@@ -1,13 +1,15 @@
 import React, {useEffect} from 'react';
 import { useRecoilState } from 'recoil';
 import { currencyArrayState } from '../Atoms/AtomArrayCurrency';
-import { isErrorState } from '../Atoms/atomError';
+import { isErrorState, isLoadingState } from '../Atoms/atomFetch';
 import { Navbar, Container } from 'react-bootstrap';
 import Scoreboard from './UI/Scoreboard';
 import useFetchRate from '../Hooks/useFetchRate';
+import Loader from './UI/Loader/Loader';
 
 const Header = () => {
     const [currencyArray, setCurrencyArray] = useRecoilState(currencyArrayState)
+    const [isLoading, setIsLoading] = useRecoilState(isLoadingState);
     const [isError, setIsError] = useRecoilState(isErrorState);
     const {getRequest} = useFetchRate('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json')
 
@@ -20,6 +22,8 @@ const Header = () => {
             !isError ?
                 <>
                     <h2> Currency converter for Ukraine</h2>
+                    { isLoading ? 
+                    <Loader/> :
                     <Container className='justify-content-around mt-3 mb-2 py-1' >
                         {currencyArray.map((currency, index) =>
                             <Scoreboard key={index}
@@ -27,6 +31,7 @@ const Header = () => {
                             </Scoreboard>
                         )}
                     </Container>
+                    }
                 </> : null
         }
         </Navbar>
