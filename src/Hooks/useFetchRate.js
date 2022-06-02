@@ -22,10 +22,6 @@ function useFetchRate(url) {
             })
     }
 
-    // useEffect( () => {
-    //     getRequest();
-    // }, [])
-
     return { getRequest }
 }
 export default useFetchRate

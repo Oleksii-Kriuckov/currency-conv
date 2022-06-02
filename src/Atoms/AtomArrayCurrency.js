@@ -5,8 +5,5 @@ export const currencyArrayState = atom({
     default: []
 })
 
-export const amountState = atom({
-    key: 'inputAmountState',
-    default: ''
-})
+
   

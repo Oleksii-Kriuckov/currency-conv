@@ -1,22 +1,13 @@
 import React from 'react'
 import Select from './UI/Select.jsx';
 import { Form } from 'react-bootstrap';
+import InputForMoney from './UI/InputForMoney/InputForMoney.jsx';
 
-const FormGroup = ({valueControl, valueSelect, onChangeControl, onChangeSelect, onFocus, onKeyDown}) => {
+const FormGroup = ({valueSelect, onChangeSelect}) => {
     return (
         <div>
             <Form.Group className="mb-3 d-flex me-5" >
-                 <Form.Control
-                    type="number"
-                    min={0}
-                    className='me-3'
-                    id='input'
-                    placeholder='amount'
-                    value={valueControl}
-                    onChange={onChangeControl}
-                    onFocus={onFocus}
-                    onKeyDown={onKeyDown}
-                />
+                 <InputForMoney/>
                 <Select
                     defaultvalue='currency'
                     value={valueSelect}
