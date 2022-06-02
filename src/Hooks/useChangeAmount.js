@@ -1,9 +1,8 @@
 import { useRecoilState } from 'recoil';
+import { currencyFirstState, currencySecondState } from '../Atoms/AtomCurrency';
 import { amountState } from '../Atoms/AtomAmount';
-import { useMemo } from 'react';
 import { useValidation } from './useValidation';
 import { amountSecondState } from '../Atoms/AtomAmount';
-import { currencyFirstState, currencySecondState } from '../Atoms/AtomCurrency';
 import { useSetResultAmount } from './useSetResultAmount';
 
 export const useChangeAmount = () => {
@@ -12,8 +11,8 @@ export const useChangeAmount = () => {
     const [currencyFirst, setCurrencyFirst] = useRecoilState(currencyFirstState)
     const [currencySecond, setCurrencySecond] = useRecoilState(currencySecondState)
     
-    const { validationAmount } = useValidation();
     const {setResultAmount} = useSetResultAmount();
+    const { validationAmount } = useValidation();
 
     const changeAmountFirst = () => {
         if (amount) {

@@ -25,19 +25,19 @@ const Main = () => {
         changeAmountFirst();
     }, [amount])
 
-    const selectCurrencyFirst = (currency) => {
-        setCurrencyFirst(currency);
-        if (amount !== '' && currencySecond !== '') {
-            return setAmountSecond(convert(amount, currency, currencySecond).toFixed(2))
-        }
-    }
+    // const selectCurrencyFirst = (currency) => {
+    //     setCurrencyFirst(currency);
+    //     if (amount !== '' && currencySecond !== '') {
+    //         return setAmountSecond(convert(amount, currency, currencySecond).toFixed(2))
+    //     }
+    // }
 
-    const selectCurrencySecond = (currency) => {
-        setCurrencySecond(currency);
-        if (amount !== '' && currencyFirst !== '') {
-            return setAmountSecond(convert(amount, currencyFirst, currency).toFixed(2))
-        }
-    }
+    // const selectCurrencySecond = (currency) => {
+    //     setCurrencySecond(currency);
+    //     if (amount !== '' && currencyFirst !== '') {
+    //         return setAmountSecond(convert(amount, currencyFirst, currency).toFixed(2))
+    //     }
+    // }
 
     return (
         <div>
