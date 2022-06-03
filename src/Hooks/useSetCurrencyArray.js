@@ -11,10 +11,13 @@ export const useSetCurrencyArray = () => {
         const arr = [];
         array.map((elem) => {
             if (foreinCurrencyArray.some(el => el === elem.cc)) {
+                if (elem.cc === 'PLN') {
+                    elem.r030 = 303
+                }
                 arr.push(elem)
             }
         })
-        setCurrencyArray(arr);
+        setCurrencyArray(arr.sort((a, b) => a['r030'] > b['r030'] ? -1 : 1));
     }
 
     return { createCurrencyArray }
