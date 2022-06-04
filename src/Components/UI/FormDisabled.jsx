@@ -5,7 +5,7 @@ import { Form } from 'react-bootstrap';
 const FormDisabled = ({ valueControl, valueSelect, onChangeSelect }) => {
     return (
         <div>
-            <Form.Group className="mb-3 d-flex" >
+            <Form.Group className="mb-3 d-flex  mb-5" >
                 <Form.Control
                     type="number"
                     id='input'

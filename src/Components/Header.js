@@ -21,10 +21,10 @@ const Header = () => {
         <Navbar bg="primary" variant="dark" className='d-block' > {
             !isError ?
                 <>
-                    <h2> Currency converter for Ukraine</h2>
+                    <h2 className='mt-3 mx-3'> Currency converter for Ukraine</h2>
                     { isLoading ? 
                     <Loader/> :
-                    <Container className='justify-content-around mt-3 mb-2 py-1 flex-wrap w-100' >
+                    <Container className='container justify-content-around mt-3 mb-2 py-1 flex-wrap w-100' >
                         {currencyArray.map((currency, index) =>
                             <Scoreboard key={index}
                                 curName={currency.cc} > {currency.rate.toFixed(2)}

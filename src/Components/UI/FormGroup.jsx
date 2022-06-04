@@ -6,7 +6,7 @@ import InputForMoney from './InputForMoney/InputForMoney.jsx';
 const FormGroup = ({valueSelect, onChangeSelect}) => {
     return (
         <div>
-            <Form.Group className="mb-3 d-flex me-md-5 me-0" >
+            <Form.Group className="d-flex me-md-5 me-0 mb-4 mb-md-5" >
                  <InputForMoney/>
                 <Select
                     defaultvalue='currency'
