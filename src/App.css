@@ -5,10 +5,11 @@
 #input {
   width: 150px;
   height: fit-content;
+  margin-right: 16px;
 }
 
 #select {
-  width: fit-content;
+  width: max-content;
 }
 
 .rate {
@@ -17,3 +18,4 @@
   padding: 1px 10px;
   border-radius: 5px;
 }
+

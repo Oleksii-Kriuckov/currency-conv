@@ -2,25 +2,17 @@ import React from 'react'
 import { useRecoilState } from 'recoil';
 import { Form } from 'react-bootstrap';
 import { amountState } from '../../../Atoms/AtomAmount';
-import style from './style.module.css'
+import style from './style.module.css';
+import { press } from '../../../Data/const';
 
 const InputForMoney = () => {
   const [amount, setAmount] = useRecoilState(amountState)
 
-  const press = (e) => {
-    if (e.key === '+' || e.key === '-' || e.code === "KeyE") {
-      e.preventDefault()
-    }
-    if (amount === '' && (e.key === '.' || e.key === '0')) {
-      e.preventDefault()
-    }
-  }
-
   return (
     <Form.Control
-      type="number"
+      type="text"
       min={0}
-      className={`me-3` }
+      className='me-3'
       id={style.input}
       placeholder='amount'
       value={amount}

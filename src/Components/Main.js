@@ -30,7 +30,7 @@ const Main = () => {
         <div>
             {!isError ?
                 <>
-                    <h4 className='mt-5'>
+                    <h4 className='mt-5 mx-4'>
                         Enter the amount in the first field, choose both currency and result will automatically appear in the second field
                     </h4>
                     <Form className='d-flex justify-content-center mt-5'>

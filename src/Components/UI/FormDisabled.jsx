@@ -5,17 +5,17 @@ import { Form } from 'react-bootstrap';
 const FormDisabled = ({ valueControl, valueSelect, onChangeSelect }) => {
     return (
         <div>
-            <Form.Group className="mb-3 d-flex me-5" >
-                <Select
-                    defaultvalue='currency'
-                    value={valueSelect}
-                    onChange={onChangeSelect}
-                />
+            <Form.Group className="mb-3 d-flex" >
                 <Form.Control
                     type="number"
                     id='input'
                     value={valueControl}
                     disabled
+                />
+                <Select
+                    defaultvalue='currency'
+                    value={valueSelect}
+                    onChange={onChangeSelect}
                 />
             </Form.Group>
         </div>

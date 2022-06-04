@@ -1,15 +1,18 @@
 import { useRecoilState } from 'recoil';
 import { amountState } from '../Atoms/AtomAmount';
-import { pattern } from '../Data/const';
+import { pattern3 } from '../Data/const';
 
 export const useValidation = () => {
     const [amount, setAmount] = useRecoilState(amountState)
     
     const validationAmount = () => { 
-        if (pattern.test(amount)) {
-        setAmount(Math.floor(parseFloat(amount) * 100) / 100)
-        console.log("valid");
-    }
+        if (pattern3.test(amount)) {
+            if (typeof amount !== "number") {
+                parseFloat(amount)
+            }
+            setAmount( Math.floor(amount * 100) / 100)
+            console.log('valid')
+        }
     }
     return {validationAmount}
 }
