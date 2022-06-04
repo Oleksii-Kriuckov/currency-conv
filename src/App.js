@@ -1,4 +1,5 @@
 import './App.css';
+import './normalize.css'
 import Header from './Components/Header';
 import Main from './Components/Main';
 import { RecoilRoot } from 'recoil';

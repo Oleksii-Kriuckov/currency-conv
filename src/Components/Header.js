@@ -24,7 +24,7 @@ const Header = () => {
                     <h2 className='mt-3 mx-3'> Currency converter for Ukraine</h2>
                     { isLoading ? 
                     <Loader/> :
-                    <Container className='container justify-content-around mt-3 mb-2 py-1 flex-wrap w-100' >
+                    <Container className='container justify-content-around mt-3 mb-2 py-1 px-3 flex-wrap w-100' >
                         {currencyArray.map((currency, index) =>
                             <Scoreboard key={index}
                                 curName={currency.cc} > {currency.rate.toFixed(2)}
