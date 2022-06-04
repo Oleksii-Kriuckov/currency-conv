@@ -19,8 +19,17 @@
   border-radius: 5px;
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 400px) {
   .container {
     flex-direction: column;
+  }
+  
+  .form_group {
+    flex-direction: column;
+  }
+
+  #select {
+    width: 150px;
+    margin-top: 16px;
   }
 }

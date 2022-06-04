@@ -14,7 +14,7 @@ const InputForMoney = () => {
       min={0}
       className='me-3'
       id={style.input}
-      placeholder='amount'
+      placeholder='input amount'
       value={amount}
       onChange={(e) => setAmount(e.target.value)}
       onFocus={() => setAmount('')}

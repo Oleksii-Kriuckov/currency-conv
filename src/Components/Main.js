@@ -27,7 +27,7 @@ const Main = () => {
     const {selectCurrencyFirst, selectCurrencySecond} = useSelectCurrency();
 
     return (
-        <div>
+        <div style={{marginBottom: 200}}>
             {!isError ?
                 <>
                     <h4 className='mt-5 mx-4'>
